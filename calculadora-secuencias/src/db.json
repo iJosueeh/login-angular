@@ -1,3 +1,35 @@
 {
-    
+  "historial": [
+    {
+      "id": "1",
+      "tipo": "Aritmética",
+      "valorInicial": 2,
+      "razon": 3,
+      "longitud": 5,
+      "resultado": [
+        2,
+        5,
+        8,
+        11,
+        14
+      ],
+      "fecha": "2025-09-21T15:00:00"
+    },
+    {
+      "id": "2",
+      "tipo": "Fibonacci",
+      "valorInicial": 0,
+      "razon": null,
+      "longitud": 6,
+      "resultado": [
+        0,
+        1,
+        1,
+        2,
+        3,
+        5
+      ],
+      "fecha": "2025-09-21T12:30:00"
+    }
+  ]
 }

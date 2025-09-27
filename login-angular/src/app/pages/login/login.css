@@ -1,0 +1,13 @@
+.login-form {
+    max-width: 400px;
+    width: 100%;
+    /* Asegura que ocupe el 100% del espacio disponible hasta el max-width */
+    margin: auto;
+    /* Centra el formulario dentro de su contenedor */
+}
+
+.form-control.is-invalid,
+.was-validated .form-control:invalid {
+    background-image: none !important;
+    padding-right: 0.75rem;
+}

@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "nombre": "Josue",
+      "apellido": "Tanta",
+      "email": "josue.tanta@ejemplo.com",
+      "password": "123456"
+    },
+    {
+      "id": "2",
+      "nombre": "Francis",
+      "apellido": "Esculpi",
+      "email": "francis.esculpi@ejemplo.com",
+      "password": "abcdef"
+    },
+    {
+      "id": "3",
+      "nombre": "María",
+      "apellido": "López",
+      "email": "maria.lopez@ejemplo.com",
+      "password": "qwerty"
+    },
+    {
+      "id": "1e3c",
+      "nombre": "Ana",
+      "apellido": "Torres",
+      "email": "ana.torres@ejemplo.com",
+      "password": "123abc"
+    },
+    {
+      "id": "3d73",
+      "nombre": "Lesly",
+      "apellido": "Huamani",
+      "email": "les.hua@example.com",
+      "password": "juan123"
+    },
+    {
+      "id": "855b",
+      "nombre": "Pepe",
+      "apellido": "Sanchez",
+      "email": "elpepe.san@example.com",
+      "password": "pepe123"
+    }
+  ]
+}

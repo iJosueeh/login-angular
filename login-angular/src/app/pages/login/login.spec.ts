@@ -6,21 +6,20 @@ import { of } from 'rxjs';
 import { Login } from './login';
 import { Auth } from '../../services/auth';
 
-describe('Login Component', () => {
+describe('Componente Login', () => {
   let component: Login;
   let fixture: ComponentFixture<Login>;
   let authServiceMock: jasmine.SpyObj<Auth>;
   let routerMock: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    // 👇 creamos mocks de Auth y Router
     authServiceMock = jasmine.createSpyObj<Auth>('Auth', ['login']);
     routerMock = jasmine.createSpyObj<Router>('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
       imports: [Login, ReactiveFormsModule],
       providers: [
-        { provide: Auth, useValue: authServiceMock },  // 👈 usar mock en vez de real
+        { provide: Auth, useValue: authServiceMock },
         { provide: Router, useValue: routerMock }
       ]
     }).compileComponents();
@@ -30,11 +29,11 @@ describe('Login Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debería ser creado', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call login on submit', () => {
+  it('debería llamar a login al enviar', () => {
     authServiceMock.login.and.returnValue(of(true));
     component.loginForm.setValue({ email: 'test@test.com', password: '1234' });
 

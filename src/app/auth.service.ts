@@ -33,16 +33,16 @@ export class AuthService {
   /**
    * Guardar sesión en localStorage
    */
-  setSession(user: User): void {
-    localStorage.setItem('currentUser', JSON.stringify(user));
+  setSession(users: User): void {
+    localStorage.setItem('currentUser', JSON.stringify(users));
   }
 
   /**
    * Obtener usuario actual de la sesión
    */
   getCurrentUser(): User | null {
-    const user = localStorage.getItem('currentUser');
-    return user ? JSON.parse(user) : null;
+    const users = localStorage.getItem('currentUser');
+    return users ? JSON.parse(users) : null;
   }
 
   /**

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Auth } from '../../services/auth';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,15 +14,14 @@ import { Auth } from '../../services/auth';
 export class Login {
   loginForm: FormGroup;
   errorMessage: string = '';
+  submitted = false;
 
-  constructor(private fb: FormBuilder, private authService: Auth, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
-
-  submitted = false;
 
   onSubmit() {
     this.submitted = true;
@@ -30,9 +29,11 @@ export class Login {
       const { email, password } = this.loginForm.value;
 
       this.authService.login(email, password).subscribe({
-        next: (success) => {
-          if (success) {
-            this.router.navigate(['/home']);
+        next: (users) => {
+          if (users) {
+            this.authService.setSession(users); // guarda sesión en localStorage
+            this.errorMessage = '';
+            this.router.navigate(['/home']);   // redirige a la ruta que quieras
           } else {
             this.errorMessage = 'Credenciales inválidas.';
           }

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../models/user';
-import { Auth } from '../../services/auth';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +19,7 @@ export class Home implements OnInit {
   editingUser: User | null = null;
   validationErrors: any = {}; 
 
-  constructor(private authService: Auth, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.user = this.authService.getCurrentUser();

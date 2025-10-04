@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs'; // Added Observable
+import { map, Observable, switchMap } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -10,8 +10,8 @@ export class Auth {
   private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
-/*-----Metodos de Login----*/
 
+  /*-----Metodos de Login----*/
   login(email: string, password: string) {
     return this.http.get<User[]>(`${this.apiUrl}/users?email=${email}&password=${password}`)
       .pipe(map(users => {
@@ -23,9 +23,37 @@ export class Auth {
       }));
   }
 
-/*---------*/
-  /*-----Metodos de Home----*/
+  /*-----Metodo de Registro----*/
+  register(nombre: string, apellido: string, email: string, password: string): Observable<boolean> {
+    return this.http.get<User[]>(`${this.apiUrl}/users?email=${email}`).pipe(
+      map(users => {
+        if (users.length > 0) {
+          throw new Error('El correo ya está registrado');
+        }
+        return null;
+      }),
+      switchMap(() => {
+        const newUser: User = {
+          nombre,
+          apellido,
+          email,
+          password
+        } as User; // sin id, lo genera el backend
 
+        return this.http.post<User>(`${this.apiUrl}/users`, newUser).pipe(
+          map(user => {
+            if (user) {
+              localStorage.setItem('currentUser', JSON.stringify(user));
+              return true;
+            }
+            return false;
+          })
+        );
+      })
+    );
+  }
+
+  /*-----Metodos de Home----*/
   getUserData(email: string) {
     return this.http.get<User[]>(`${this.apiUrl}/users?email=${email}`)
       .pipe(map(users => users.length > 0 ? users[0] : null));
@@ -51,9 +79,7 @@ export class Auth {
     return this.http.delete(`${this.apiUrl}/users/${userId}`);
   }
 
-  updateUser(user: User): Observable<User> { // Modified return type
+  updateUser(user: User): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/users/${user.id}`, user);
   }
-
-  /*---------*/
 }

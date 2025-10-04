@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Auth } from '../../services/auth';
-import { RouterModule } from '@angular/router'; // ✅ agregado
-
+import { AuthService } from '../../services/auth.service';
+import { RouterModule } from '@angular/router'; 
 @Component({
   selector: 'app-register',
   standalone: true,
   templateUrl: './register.html',
   styleUrls: ['./register.css'],
-  imports: [CommonModule, ReactiveFormsModule, RouterModule] // ✅ agregado
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
+  providers: [AuthService]
 })
 export class Register {
   registerForm: FormGroup;
@@ -18,7 +18,7 @@ export class Register {
   successMessage: string = '';
   submitted = false;
 
-  constructor(private fb: FormBuilder, private authService: Auth, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerForm = fb.group({
       nombre: ['', [Validators.required, Validators.minLength(2)]],
       apellido: ['', [Validators.required, Validators.minLength(2)]],

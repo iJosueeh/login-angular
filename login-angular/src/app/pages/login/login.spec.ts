@@ -4,22 +4,22 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 
 import { Login } from './login';
-import { Auth } from '../../services/auth';
+import { AuthService } from '../../services/auth.service';
 
 describe('Componente Login', () => {
   let component: Login;
   let fixture: ComponentFixture<Login>;
-  let authServiceMock: jasmine.SpyObj<Auth>;
+  let authServiceMock: jasmine.SpyObj<AuthService>;
   let routerMock: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    authServiceMock = jasmine.createSpyObj<Auth>('Auth', ['login']);
+    authServiceMock = jasmine.createSpyObj<AuthService>('AuthService', ['login']);
     routerMock = jasmine.createSpyObj<Router>('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
       imports: [Login, ReactiveFormsModule],
       providers: [
-        { provide: Auth, useValue: authServiceMock },
+        { provide: AuthService, useValue: authServiceMock },
         { provide: Router, useValue: routerMock }
       ]
     }).compileComponents();

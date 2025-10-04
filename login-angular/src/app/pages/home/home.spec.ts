@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { Home } from './home';
-import { Auth } from '../../services/auth';
+import { AuthService } from '../../services/auth.service';
 import { of } from 'rxjs';
 
 describe('HomeComponent', () => {
@@ -24,7 +24,7 @@ describe('HomeComponent', () => {
     await TestBed.configureTestingModule({
       imports: [Home],
       providers: [
-        { provide: Auth, useValue: authServiceMock },
+        { provide: AuthService, useValue: authServiceMock },
         { provide: Router, useValue: routerMock }
       ]
     }).compileComponents();

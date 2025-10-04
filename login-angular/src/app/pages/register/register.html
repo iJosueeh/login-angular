@@ -75,6 +75,23 @@
           </div>
         </div>
 
+        <!-- Confirmar Contraseña -->
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Confirma tu contraseña"
+            formControlName="confirmPassword" autocomplete="off"
+            [class.is-invalid]="submitted && registerForm.get('confirmPassword')?.invalid || (submitted && registerForm.errors?.['mismatch'])">
+
+          <div class="invalid-feedback">
+            @if (submitted && registerForm.get('confirmPassword')?.errors?.['required']) {
+              <div>La confirmación de la contraseña es requerida.</div>
+            }
+            @if (submitted && registerForm.errors?.['mismatch']) {
+              <div>Las contraseñas no coinciden.</div>
+            }
+          </div>
+        </div>
+
         <!-- Mensaje de error global -->
         @if (errorMessage) {
           <div class="alert alert-danger text-center">

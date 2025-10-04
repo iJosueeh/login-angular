@@ -1,27 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "nombre": "Josue",
-      "apellido": "Tanta",
-      "email": "josue.tanta@ejemplo.com",
-      "password": "123456"
-    },
-    {
-      "id": "2",
-      "nombre": "Francis",
-      "apellido": "Esculpi",
-      "email": "francis.esculpi@ejemplo.com",
-      "password": "abcdef"
-    },
-    {
-      "id": "3",
-      "nombre": "María",
-      "apellido": "López",
-      "email": "maria.lopez@ejemplo.com",
-      "password": "qwerty"
-    },
-    {
       "id": "1e3c",
       "nombre": "Ana",
       "apellido": "Torres",
@@ -41,6 +20,13 @@
       "apellido": "Sanchez",
       "email": "elpepe.san@example.com",
       "password": "pepe123"
+    },
+    {
+      "id": "ef4c",
+      "nombre": "Josue",
+      "apellido": "Cieza",
+      "email": "royer.tanta27@gmail.com",
+      "password": "123456"
     }
   ]
 }

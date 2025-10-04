@@ -48,8 +48,8 @@ export class Register {
             this.errorMessage = 'Error al registrar el usuario.';
           }
         },
-        error: () => {
-          this.errorMessage = 'Ocurrió un error al intentar registrar.';
+        error: (err) => {
+          this.errorMessage = err.message || 'Ocurrió un error al intentar registrar.';
         },
       });
     } else {

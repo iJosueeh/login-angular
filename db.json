@@ -48,6 +48,13 @@
       "apellido": "Cieza",
       "email": "royer.tanta27@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "c47b",
+      "nombre": "Lesly",
+      "apellido": "Huamani",
+      "email": "leshua@ejemplo.com",
+      "password": "abcdef"
     }
   ]
 }

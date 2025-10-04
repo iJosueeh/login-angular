@@ -27,6 +27,13 @@
       "apellido": "Cieza",
       "email": "royer.tanta27@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "34ec",
+      "nombre": "Kath",
+      "apellido": "Salas Quiroz",
+      "email": "kath@gmail.com",
+      "password": "123456"
     }
   ]
 }

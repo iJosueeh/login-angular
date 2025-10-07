@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
+
 export class Home implements OnInit {
   user: User | null = null;
   showPassword = false;
@@ -68,7 +69,7 @@ export class Home implements OnInit {
     }
     if (!this.editingUser?.email) {
       this.validationErrors.email = 'El email es requerido.';
-      isValid = false;
+      isValid = false; 
     } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(this.editingUser.email)) {
       this.validationErrors.email = 'El email no es válido.';
       isValid = false;

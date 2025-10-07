@@ -1,81 +1,60 @@
 <div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
   <div class="row w-75 shadow-lg rounded-4 overflow-hidden">
-
-    <!-- Columna izquierda -->
     <div class="col-md-5 offset-md-1 d-flex align-items-center justify-content-center left-panel">
       <img src="assets/img/register-illustration.jpg" alt="Register illustration" class="img-fluid"
         style="max-height: 350px;">
     </div>
-
-    <!-- Columna derecha -->
     <div class="col-md-6 bg-primary text-white p-5">
       <h2 class="mb-4 text-center fw-bold">Registrarse</h2>
-
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
-        
-        <!-- Nombre -->
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre"
-            formControlName="nombre" autocomplete="off"
-            [class.is-invalid]="submitted && registerForm.get('nombre')?.invalid">
-
+          <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" formControlName="nombre"
+            autocomplete="off" [class.is-invalid]="submitted && registerForm.get('nombre')?.invalid">
           <div class="invalid-feedback">
             @if (submitted && registerForm.get('nombre')?.errors?.['required']) {
-              <div>El nombre es requerido.</div>
+            <div>El nombre es requerido.</div>
             }
           </div>
         </div>
-
-        <!-- Apellido -->
         <div class="mb-3">
           <label for="apellido" class="form-label">Apellido</label>
           <input type="text" class="form-control" id="apellido" placeholder="Ingresa tu apellido"
             formControlName="apellido" autocomplete="off"
             [class.is-invalid]="submitted && registerForm.get('apellido')?.invalid">
-
           <div class="invalid-feedback">
             @if (submitted && registerForm.get('apellido')?.errors?.['required']) {
-              <div>El apellido es requerido.</div>
+            <div>El apellido es requerido.</div>
             }
           </div>
         </div>
-
-        <!-- Correo -->
         <div class="mb-3">
           <label for="email" class="form-label">Correo Electrónico</label>
-          <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo"
-            formControlName="email" autocomplete="off"
-            [class.is-invalid]="submitted && registerForm.get('email')?.invalid">
-
+          <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo" formControlName="email"
+            autocomplete="off" [class.is-invalid]="submitted && registerForm.get('email')?.invalid">
           <div class="invalid-feedback">
             @if (submitted && registerForm.get('email')?.errors?.['required']) {
-              <div>El correo electrónico es requerido.</div>
+            <div>El correo electrónico es requerido.</div>
             }
             @if (submitted && registerForm.get('email')?.errors?.['email']) {
-              <div>El correo electrónico no es válido.</div>
+            <div>El correo electrónico no es válido.</div>
             }
           </div>
         </div>
-
-        <!-- Contraseña -->
         <div class="mb-3">
           <label for="password" class="form-label">Contraseña</label>
           <input type="password" class="form-control" id="password" placeholder="Crea una contraseña"
             formControlName="password" autocomplete="off"
             [class.is-invalid]="submitted && registerForm.get('password')?.invalid">
-
           <div class="invalid-feedback">
             @if (submitted && registerForm.get('password')?.errors?.['required']) {
-              <div>La contraseña es requerida.</div>
+            <div>La contraseña es requerida.</div>
             }
             @if (submitted && registerForm.get('password')?.errors?.['minlength']) {
-              <div>La contraseña debe tener al menos 6 caracteres.</div>
+            <div>La contraseña debe tener al menos 6 caracteres.</div>
             }
           </div>
         </div>
-
-        <!-- Confirmar Contraseña -->
         <div class="mb-3">
           <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
           <input type="password" class="form-control" id="confirmPassword" placeholder="Confirma tu contraseña"
@@ -84,31 +63,23 @@
 
           <div class="invalid-feedback">
             @if (submitted && registerForm.get('confirmPassword')?.errors?.['required']) {
-              <div>La confirmación de la contraseña es requerida.</div>
+            <div>La confirmación de la contraseña es requerida.</div>
             }
             @if (submitted && registerForm.errors?.['mismatch']) {
-              <div>Las contraseñas no coinciden.</div>
+            <div>Las contraseñas no coinciden.</div>
             }
           </div>
         </div>
-
-        <!-- Mensaje de error global -->
         @if (errorMessage) {
-          <div class="alert alert-danger text-center">
-            {{ errorMessage }}
-          </div>
+        <div class="alert alert-danger text-center">
+          {{ errorMessage }}
+        </div>
         }
-
-        <!-- Botón -->
         <button type="submit" class="btn btn-dark w-100 rounded-pill mt-3">
           Registrarse
         </button>
       </form>
-
-      <!-- Separador -->
       <hr class="my-4 border-light">
-
-      <!-- Link de login -->
       <div class="text-center">
         <span>¿Ya tienes una cuenta?</span>
         <a routerLink="/login" class="text-info text-decoration-none fw-bold">Iniciar Sesión</a>

@@ -57,3 +57,13 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+### Mock API con JSON Server
+- Base URL: http://localhost:3000
+- Endpoints:
+  - GET /users → lista de usuarios
+  - GET /users/:id → usuario por id
+  - POST /users → crear usuario
+  - PUT /users/:id → reemplazar usuario
+  - PATCH /users/:id → actualizar campos
+  - DELETE /users/:id → eliminar usuario

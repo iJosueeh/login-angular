@@ -1,22 +1,18 @@
 <div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
     <div class="row w-75 shadow-lg rounded-4 overflow-hidden">
-
-        
         <div class="col-md-4 d-flex align-items-center justify-content-center left-panel">
             <img src="assets/img/login-illustration.png" alt="Welcome illustration" class="img-fluid"
                 style="max-height: 450px;">
         </div>
-
-        
         <div class="col-md-8 bg-primary text-white p-5 d-flex flex-column justify-content-center">
             <div *ngIf="user">
                 <h2 class="mb-4 text-center fw-bold">¡Bienvenido, {{ user.nombre }}!</h2>
-
                 <div class="card bg-dark text-white rounded-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="card-title mb-0">Datos del usuario</h4>
-                            <button type="button" class="btn btn-outline-light btn-sm" (click)="openEditModal()" data-bs-toggle="modal" data-bs-target="#editUserModal">
+                            <button type="button" class="btn btn-outline-light btn-sm" (click)="openEditModal()"
+                                data-bs-toggle="modal" data-bs-target="#editUserModal">
                                 Editar datos
                             </button>
                         </div>
@@ -24,19 +20,21 @@
                         <p class="card-text"><strong>Apellido:</strong> {{ user.apellido }}</p>
                         <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
                         <div class="d-flex align-items-center">
-                            <p class="card-text mb-0"><strong>Contraseña:</strong> {{ showPassword ? user.password : '********' }}</p>
+                            <p class="card-text mb-0"><strong>Contraseña:</strong> {{ showPassword ? user.password :
+                                '********' }}</p>
                             <button (click)="togglePassword()" class="btn btn-link text-white ms-3">
-                                <i class="bi fs-5" [ngClass]="{'bi-eye-fill': !showPassword, 'bi-eye-slash-fill': showPassword}"></i>
+                                <i class="bi fs-5"
+                                    [ngClass]="{'bi-eye-fill': !showPassword, 'bi-eye-slash-fill': showPassword}"></i>
                             </button>
                         </div>
                     </div>
                 </div>
-
                 <div class="d-flex mt-4">
                     <button (click)="logout()" class="btn btn-dark w-50 rounded-pill me-2">
                         Cerrar Sesión
                     </button>
-                    <button type="button" class="btn btn-danger w-50 rounded-pill ms-2" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                    <button type="button" class="btn btn-danger w-50 rounded-pill ms-2" data-bs-toggle="modal"
+                        data-bs-target="#deleteAccountModal">
                         Eliminar Cuenta
                     </button>
                 </div>
@@ -52,71 +50,78 @@
         </div>
     </div>
 </div>
-
-
 <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bg-dark text-white" *ngIf="editingUser">
             <div class="modal-header border-0">
                 <h5 class="modal-title" id="editUserModalLabel">Editar Datos</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
                         <label for="editNombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="editNombre" [(ngModel)]="editingUser.nombre" name="editNombre" (input)="validateEditForm()">
-                        <div *ngIf="validationErrors.nombre" class="text-danger mt-1">{{ validationErrors.nombre }}</div>
+                        <input type="text" class="form-control" id="editNombre" [(ngModel)]="editingUser.nombre"
+                            name="editNombre" (input)="validateEditForm()">
+                        <div *ngIf="validationErrors.nombre" class="text-danger mt-1">{{ validationErrors.nombre }}
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="editApellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" id="editApellido" [(ngModel)]="editingUser.apellido" name="editApellido" (input)="validateEditForm()">
-                        <div *ngIf="validationErrors.apellido" class="text-danger mt-1">{{ validationErrors.apellido }}</div>
+                        <input type="text" class="form-control" id="editApellido" [(ngModel)]="editingUser.apellido"
+                            name="editApellido" (input)="validateEditForm()">
+                        <div *ngIf="validationErrors.apellido" class="text-danger mt-1">{{ validationErrors.apellido }}
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="editEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="editEmail" [(ngModel)]="editingUser.email" name="editEmail" (input)="validateEditForm()">
+                        <input type="email" class="form-control" id="editEmail" [(ngModel)]="editingUser.email"
+                            name="editEmail" (input)="validateEditForm()">
                         <div *ngIf="validationErrors.email" class="text-danger mt-1">{{ validationErrors.email }}</div>
                     </div>
                     <div class="mb-3">
                         <label for="editPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="editPassword" [(ngModel)]="editingUser.password" name="editPassword" (input)="validateEditForm()">
-                        <div *ngIf="validationErrors.password" class="text-danger mt-1">{{ validationErrors.password }}</div>
+                        <input type="password" class="form-control" id="editPassword" [(ngModel)]="editingUser.password"
+                            name="editPassword" (input)="validateEditForm()">
+                        <div *ngIf="validationErrors.password" class="text-danger mt-1">{{ validationErrors.password }}
+                        </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)="applyEdit()" [disabled]="!validateEditForm()" data-bs-dismiss="modal">Aplicar</button>
+                <button type="button" class="btn btn-primary" (click)="applyEdit()" [disabled]="!validateEditForm()"
+                    data-bs-dismiss="modal">Aplicar</button>
             </div>
         </div>
     </div>
 </div>
-
-
-
-<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-dark text-white">
-      <div class="modal-header border-0">
-        <h5 class="modal-title" id="deleteAccountModalLabel">Eliminar Cuenta</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>¿Seguro que quieres eliminar tu cuenta? Esta acción es irreversible.</p>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" [(ngModel)]="isDeleteChecked" id="deleteCheck">
-          <label class="form-check-label" for="deleteCheck">
-            Estoy seguro
-          </label>
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="deleteAccountModalLabel">Eliminar Cuenta</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro que quieres eliminar tu cuenta? Esta acción es irreversible.</p>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="isDeleteChecked" id="deleteCheck">
+                    <label class="form-check-label" for="deleteCheck">
+                        Estoy seguro
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn" [ngClass]="isDeleteChecked ? 'btn-danger' : 'btn-outline-danger'"
+                    [disabled]="!isDeleteChecked" (click)="confirmDelete()" data-bs-dismiss="modal">
+                    Eliminar cuenta
+                </button>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer border-0">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn" [ngClass]="isDeleteChecked ? 'btn-danger' : 'btn-outline-danger'" [disabled]="!isDeleteChecked" (click)="confirmDelete()" data-bs-dismiss="modal">
-            Eliminar cuenta
-        </button>
-      </div>
     </div>
-  </div>
 </div>

@@ -1,25 +1,17 @@
 <div class="container-fluid vh-100 d-flex align-items-center justify-content-center">
     <div class="row w-75 shadow-lg rounded-4 overflow-hidden">
-
-        <!-- Columna izquierda -->
         <div class="col-md-5 offset-md-1 d-flex align-items-center justify-content-center left-panel">
             <img src="assets/img/login-illustration.png" alt="Login illustration" class="img-fluid"
                 style="max-height: 350px;">
         </div>
-
-        <!-- Columna derecha -->
         <div class="col-md-6 bg-primary text-white p-5">
             <h2 class="mb-4 text-center fw-bold">Iniciar Sesión</h2>
-
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
-
-                <!-- Correo -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo Electrónico</label>
                     <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo"
                         formControlName="email" autocomplete="off"
                         [class.is-invalid]="submitted && loginForm.get('email')?.invalid">
-
                     <div class="invalid-feedback">
                         @if (submitted && loginForm.get('email')?.errors?.['required']) {
                         <div>El correo electrónico es requerido.</div>
@@ -29,8 +21,6 @@
                         }
                     </div>
                 </div>
-
-                <!-- Contraseña -->
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña"
@@ -43,29 +33,19 @@
                         }
                     </div>
                 </div>
-
-                <!-- Mensaje de error global -->
                 @if (errorMessage) {
                 <div class="alert alert-danger text-center">
                     {{ errorMessage }}
                 </div>
                 }
-
-                <!-- Botón -->
                 <button type="submit" class="btn btn-dark w-100 rounded-pill mt-3">
                     Iniciar Sesión
                 </button>
             </form>
-
-            <!-- Separador -->
             <hr class="my-4 border-light">
-
-            <!-- Link de registro -->
             <div class="text-center">
                 <span>¿No tienes una cuenta?</span>
                 <a routerLink="/register" class="btn btn-link text-info text-decoration-none fw-bold">Registrarse</a>
-
-
             </div>
         </div>
     </div>
